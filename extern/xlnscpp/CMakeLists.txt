@@ -1,11 +1,11 @@
 # Options that mirror the original build-time feature macros.
 option(XLNS16_IDEAL  "Use ideal Gaussian log for xlns16" OFF)
-option(XLNS16_ALT    "Use streamlined xlns16 add for modern arch" OFF)
-option(XLNS16_ALTOPT "Use LPVIP approximation tweak for xlns16_alt" OFF)
+option(XLNS16_ALT    "Use streamlined xlns16 add for modern arch" ON)
+option(XLNS16_ALTOPT "Use LPVIP approximation tweak for xlns16_alt" ON)
 option(XLNS16_TABLE  "Use table lookups for xlns16 conversions/sb/db" OFF)
 
 option(XLNS32_IDEAL  "Use ideal Gaussian log for xlns32" OFF)
-option(XLNS32_ALT    "Use streamlined xlns32 add for modern arch" OFF)
+option(XLNS32_ALT    "Use streamlined xlns32 add for modern arch" ON)
 option(XLNS32_ARCH16 "Use 16-bit arch layout for xlns32" OFF)
 
 add_library(xlns16 STATIC xlns16.cpp)

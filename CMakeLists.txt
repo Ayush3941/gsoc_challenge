@@ -17,7 +17,17 @@ add_subdirectory(extern/xlnscpp)
 
 add_executable(stand_alone_matmul stand_alone_matmul.c)
 
-# 4) ggml demos (C++ files)
+# 4) xlns matmul demos (C++ linkage; xlns_alt builds)
+
+add_executable(xlns16_matmul xlns16_matmul.c)
+set_source_files_properties(xlns16_matmul PROPERTIES LANGUAGE CXX)
+target_link_libraries(xlns16_matmul PRIVATE xlns::xlns16)
+
+add_executable(xlns32_matmul xlns32_matmul.c)
+set_source_files_properties(xlns32_matmul PROPERTIES LANGUAGE CXX)
+target_link_libraries(xlns32_matmul PRIVATE xlns::xlns32)
+
+# 5) ggml demos (C++ files)
 
 add_executable(ggml_demo  ggml_demo.cpp)
 add_executable(ggml_demo2 ggml_demo2.cpp)
@@ -29,7 +39,7 @@ target_link_libraries(ggml_demo2 PRIVATE ggml ggml-cpu)
 
 
 
-# 5) build xlns tests from extern/xlnscpp 
+# 6) build xlns tests from extern/xlnscpp 
 
 add_executable(xlns16test extern/xlnscpp/xlns16test.cpp)
 add_executable(xlns32test extern/xlnscpp/xlns32test.cpp)
