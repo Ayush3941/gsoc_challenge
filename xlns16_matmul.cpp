@@ -1,10 +1,7 @@
-// Matrix multiply using 16-bit XLNS (alt path)
+// Matrix multiply using 16-bit XLNS (alt path set via CMake)
 #include <stdio.h>
 #include <vector>
-
-#define xlns16_alt
-#define xlns16_altopt
-#include "extern/xlnscpp/xlns16.cpp"
+#include <xlns16.cpp>
 
 using namespace std;
 

@@ -1,9 +1,7 @@
-// Matrix multiply using 32-bit XLNS (alt path)
+// Matrix multiply using 32-bit XLNS (alt path set via CMake)
 #include <stdio.h>
 #include <vector>
-
-#define xlns32_alt
-#include "extern/xlnscpp/xlns32.cpp"
+#include <xlns32.cpp>
 
 using namespace std;
 

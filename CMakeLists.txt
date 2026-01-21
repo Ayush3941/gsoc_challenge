@@ -21,9 +21,13 @@ add_executable(stand_alone_matmul stand_alone_matmul.c)
 
 add_executable(xlns16_matmul xlns16_matmul.cpp)
 set_source_files_properties(xlns16_matmul PROPERTIES LANGUAGE CXX)
+target_include_directories(xlns16_matmul PRIVATE extern/xlnscpp)
+target_compile_definitions(xlns16_matmul PRIVATE xlns16_alt xlns16_altopt)
 
 add_executable(xlns32_matmul xlns32_matmul.cpp)
 set_source_files_properties(xlns32_matmul PROPERTIES LANGUAGE CXX)
+target_include_directories(xlns32_matmul PRIVATE extern/xlnscpp)
+target_compile_definitions(xlns32_matmul PRIVATE xlns32_alt)
 
 # 5) ggml demos (C++ files)
 
