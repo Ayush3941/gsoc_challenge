@@ -1,0 +1,43 @@
+# Options that mirror the original build-time feature macros.
+option(XLNS16_IDEAL  "Use ideal Gaussian log for xlns16" OFF)
+option(XLNS16_ALT    "Use streamlined xlns16 add for modern arch" OFF)
+option(XLNS16_ALTOPT "Use LPVIP approximation tweak for xlns16_alt" OFF)
+option(XLNS16_TABLE  "Use table lookups for xlns16 conversions/sb/db" OFF)
+
+option(XLNS32_IDEAL  "Use ideal Gaussian log for xlns32" OFF)
+option(XLNS32_ALT    "Use streamlined xlns32 add for modern arch" OFF)
+option(XLNS32_ARCH16 "Use 16-bit arch layout for xlns32" OFF)
+
+add_library(xlns16 STATIC xlns16.cpp)
+target_include_directories(xlns16 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_sources(xlns16 PUBLIC xlns.hpp)
+
+if(XLNS16_IDEAL)
+  target_compile_definitions(xlns16 PUBLIC xlns16_ideal)
+endif()
+if(XLNS16_ALT)
+  target_compile_definitions(xlns16 PUBLIC xlns16_alt)
+endif()
+if(XLNS16_ALTOPT)
+  target_compile_definitions(xlns16 PUBLIC xlns16_altopt)
+endif()
+if(XLNS16_TABLE)
+  target_compile_definitions(xlns16 PUBLIC xlns16_table)
+endif()
+
+add_library(xlns32 STATIC xlns32.cpp)
+target_include_directories(xlns32 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_sources(xlns32 PUBLIC xlns.hpp)
+
+if(XLNS32_IDEAL)
+  target_compile_definitions(xlns32 PUBLIC xlns32_ideal)
+endif()
+if(XLNS32_ALT)
+  target_compile_definitions(xlns32 PUBLIC xlns32_alt)
+endif()
+if(XLNS32_ARCH16)
+  target_compile_definitions(xlns32 PUBLIC xlns32_arch16)
+endif()
+
+add_library(xlns::xlns16 ALIAS xlns16)
+add_library(xlns::xlns32 ALIAS xlns32)

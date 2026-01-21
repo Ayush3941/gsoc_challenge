@@ -9,23 +9,27 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(extern/ggml)
 
-# 2) Your standalone C matmul (no ggml, no xlns)
+# 2) Build xlns libraries (extern/xlnscpp)
+
+add_subdirectory(extern/xlnscpp)
+
+# 3) standalone C matmul (no ggml, no xlns)
 
 add_executable(stand_alone_matmul stand_alone_matmul.c)
 
-# 3) ggml demos (C++ files)
+# 4) ggml demos (C++ files)
 
 add_executable(ggml_demo  ggml_demo.cpp)
 add_executable(ggml_demo2 ggml_demo2.cpp)
 
-# Link ggml libs (most ggml builds expose ggml + ggml-cpu)
+# Link ggml libs for ggml-cpu
 
 target_link_libraries(ggml_demo  PRIVATE ggml ggml-cpu)
 target_link_libraries(ggml_demo2 PRIVATE ggml ggml-cpu)
 
 
 
-# 4) Optional: build xlns tests from extern/xlnscpp (no installation needed)
+# 5) build xlns tests from extern/xlnscpp 
 
 add_executable(xlns16test extern/xlnscpp/xlns16test.cpp)
 add_executable(xlns32test extern/xlnscpp/xlns32test.cpp)
