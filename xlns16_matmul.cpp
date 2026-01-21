@@ -1,8 +1,10 @@
-// Matrix multiply using 16-bit XLNS (xlns16_alt build)
+// Matrix multiply using 16-bit XLNS (alt path)
 #include <stdio.h>
 #include <vector>
 
-#include "xlns.hpp"
+#define xlns16_alt
+#define xlns16_altopt
+#include "extern/xlnscpp/xlns16.cpp"
 
 using namespace std;
 
